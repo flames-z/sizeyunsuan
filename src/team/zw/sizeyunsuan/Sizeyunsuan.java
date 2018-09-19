@@ -2,7 +2,7 @@ package team.zw.sizeyunsuan;
 
 import java.util.Scanner;
 
-public class sizeyunsuan {
+public class Sizeyunsuan {
 	public static void main(String[] args) {
 //		while(true) {
 			System.out.println("\n--------------------伍欣怡&钟秋爽 结对程序----------------------");

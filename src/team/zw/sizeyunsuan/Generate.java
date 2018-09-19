@@ -1,5 +1,5 @@
 package team.zw.sizeyunsuan;
 
-public class calculate {
-	
+public class Generate {
+
 }
