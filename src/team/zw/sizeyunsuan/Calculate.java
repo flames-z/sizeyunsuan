@@ -52,26 +52,154 @@ public class Calculate {
 		}
 	}
 	
-	public Calculate sub(Calculate n1, Calculate n2) {
+	public Calculate sub(fraction n1, fraction n2) {
 		
 		//判断不出现负数,要在这里实现吗？还是在生成后再判断？
-		/***if(newne<0) {
-			System.out.println("出现负数");
-		}***/
-		int newne = n1.ne * n2.deno+n1.n*n1.deno - n1.deno * n2.ne-n2.n*n2.deno;
-		int newdeno = n1.deno * n2.deno;
-		int g = gcd(newdeno, newne);
-		int newn;
-		if(newdeno < newne) {
-			newn = newne/newdeno;
+		
+		fraction f1 = new fraction();
+		if(n1.ne>0&&n2.ne>0) {
+			
+			int lc = lcm(n1.deno,n2.deno);
+			int newne = lc*n1.n+lc/n1.deno*n1.ne-(lc*n2.n+lc/n2.deno*n2.ne);
+			int newdeno = lc;
+			int newn;
+			if(newdeno < newne) {
+				newn = newne/newdeno;
+			}
+			else newn =0;
+			newne = newne-newn*newdeno;            //化假分数为真分数
+			
+			
+			int g = gcd(newdeno, newne);
+			
+			f1.n = newn;
+			f1.ne = newne/g;
+			f1.deno = newdeno/g;
+			return new Calculate(f1);
 		}
-		else newn =0;
-		return new Calculate(newn,newne/g, newdeno/g);
-		
-		
-		
+		else if(n1.ne>0||n2.ne>0) {
+			f1.n= n1.n-n2.n-1;
+			f1.deno =n1.deno + n2.deno;
+			f1.ne = n1.deno+n2.deno-(n1.ne+n2.ne);
+			return new Calculate(f1);
+		}	
+		else {
+			f1.n= n1.n-n2.n;
+			f1.deno = 0;
+			f1.ne = 0;
+			return new Calculate(f1);
+		}		
 	}
+	public Calculate mul(fraction n1, fraction n2) {
+		fraction f1 = new fraction();
+		if(n1.ne>0&&n2.ne>0) {
+			
+			int newne = (n1.n*n1.deno+n1.ne)*(n2.n*n2.deno+n2.ne);
+			int newdeno = n1.deno * n2.deno;
+			int newn;
+			if(newdeno < newne) {
+				newn = newne/newdeno;
+			}
+			else newn =0;
+			newne = newne-newn*newdeno;            //化假分数为真分数
+			
+			
+			int g = gcd(newdeno, newne);
+			
+			f1.n = newn;
+			f1.ne = newne/g;
+			f1.deno = newdeno/g;
+			return new Calculate(f1);
+		}
+		
+		else if(n1.ne>0||n2.ne>0) {
+			int newne = n1.n*n2.ne+n2.n*n1.ne;
+			int newdeno =n1.deno + n2.deno;
+			int newn=n1.n*n2.n;
+			if(newdeno < newne) {
+				 newn = newne/newdeno;
+			}
+			newne = newne-newn*newdeno;
+			int g = gcd(newdeno, newne);
+			f1.deno = newdeno/g;
+			f1.ne = newne/g;
+			f1.n =  n1.n*n2.n+newn;
+			
+			return new Calculate(f1);
+			}
 	
+		else {
+			f1.n= n1.n*n2.n;
+			f1.deno = 0;
+			f1.ne = 0;
+			return new Calculate(f1);
+		}		
+	}
+	public Calculate div(fraction n1, fraction n2) {
+		fraction f1 = new fraction();
+		if(n1.ne>0&&n2.ne>0) {
+			
+			int newne = (n1.n*n1.deno+n1.ne)*n2.deno;
+			int newdeno = n1.deno * (n2.n*n2.deno+n2.ne);
+			int newn;
+			if(newdeno < newne) {
+				newn = newne/newdeno;
+			}
+			else newn =0;
+			newne = newne-newn*newdeno;            //化假分数为真分数
+			
+			
+			int g = gcd(newdeno, newne);
+			
+			f1.n = newn;
+			f1.ne = newne/g;
+			f1.deno = newdeno/g;
+			return new Calculate(f1);
+		}
+		
+		else if(n2.ne>0) {
+
+			int newne = n1.n*n2.deno;
+			int newdeno = n2.n*n2.deno+n2.ne;
+			int newn;
+			if(newdeno < newne) {
+				 newn = newne/newdeno;
+			}
+			else newn = 0;
+			newne = newne-newn*newdeno;
+			int g = gcd(newdeno, newne);
+			f1.deno = newdeno/g;
+			f1.ne = newne/g;
+			f1.n =  n1.n*n2.n+newn;
+			
+			return new Calculate(f1);
+			}
+		else if(n1.ne>0) {
+			int newne = n1.n*n1.deno+n1.ne;
+			int newdeno = n1.deno * n2.n;
+			int newn;
+			if(newdeno < newne) {
+				newn = newne/newdeno;
+			}
+			else newn =0;
+			newne = newne-newn*newdeno;            //化假分数为真分数
+			
+			
+			int g = gcd(newdeno, newne);
+			
+			f1.n = newn;
+			f1.ne = newne/g;
+			f1.deno = newdeno/g;
+			return new Calculate(f1);
+		}
+	
+		else {
+			f1.n= n1.n/n2.n;
+			f1.deno = n1.n;			
+			f1.ne = n2.n-f1.n*f1.deno;
+			return new Calculate(f1);
+		}		
+	}
 	public int gcd(int a, int b) {   //求最大公因子
 		int m = Math.max(a, b);
 		int n = Math.min(a, b);

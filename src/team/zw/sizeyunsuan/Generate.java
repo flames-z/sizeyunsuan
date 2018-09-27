@@ -99,7 +99,7 @@ public class Generate{
 		f2 = g.rand2();
 		System.out.println();
 		Calculate c = new Calculate();
-		System.out.printf("%d'%d/%d",c.add(f1,f2).n, c.add(f1,f2).ne, c.add(f1,f2).deno);
+		System.out.printf("%d'%d/%d",c.div(f1,f2).n, c.div(f1,f2).ne, c.div(f1,f2).deno);
 		}
 }
 class fraction {
