@@ -30,11 +30,8 @@ public class FileProcessor {
 		}
 	}
 	
-	public static void exportFile() throws IOException {
-		File dir = new File("");
-		String path = dir.getAbsolutePath();
-		
-		String fileName = path + "Exercise.txt";
+	public static void exportFile() throws IOException {		
+		String fileName = "Exercise.txt";
 		File file = new File(fileName);
 		try {
 			if(file.exists()) {
@@ -46,7 +43,7 @@ public class FileProcessor {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		System.out.print(path);
+//		System.out.print(path);
 		
 	}
 	
