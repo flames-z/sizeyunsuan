@@ -34,8 +34,8 @@ public class Generate{
 		else if (randd==1) {
 			int a = (int)(Math.random()*3);
 			String str0 =  getstring() + opch() + getstring() + opch() + getstring();
-			String str1 = "( "+ getstring() + opch() + getstring() + ")" + opch() + getstring();
-			String str2 = getstring() + opch() + "(" + getstring() + opch() + getstring() + ")";
+			String str1 = " ("+ getstring() + opch() + getstring() + ")" + opch() + getstring();
+			String str2 = getstring() + opch() + " (" + getstring() + opch() + getstring() + ")";
 			switch(a) {
 			
 			case(0):
@@ -52,11 +52,11 @@ public class Generate{
 		else {
 			
 			int a = (int)(Math.random()*5);
-			String str0 = "( "+getstring() + opch() + getstring() + ")" + opch() + getstring() + opch() + getstring();
-			String str1 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + ")" + opch() + getstring();
-			String str2 = getstring() + opch() + getstring() + opch() +"( "+ getstring() + opch() + getstring() + ")";
-			String str3 = "( "+getstring() + opch() + getstring() + opch()  + ")"+ getstring() + opch() + getstring();
-			String str4 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + opch() + getstring() + ")";
+			String str0 = " ("+getstring() + opch() + getstring() + ")" + opch() + getstring() + opch() + getstring();
+			String str1 = getstring() + opch() +" ("+ getstring() + opch() + getstring() + ")" + opch() + getstring();
+			String str2 = getstring() + opch() + getstring() + opch() +" ("+ getstring() + opch() + getstring() + ")";
+			String str3 = " ("+getstring() + opch() + getstring() + opch()  + ")"+ getstring() + opch() + getstring();
+			String str4 = getstring() + opch() +" ("+ getstring() + opch() + getstring() + opch() + getstring() + ")";
 			
 			switch(a) {
 			
@@ -114,7 +114,7 @@ public class Generate{
 	String getstring() {
 		
 		fraction f = rand2();
-		return ""+f.n+"'"+f.ne+"/"+f.deno;
+		return " "+f.n+"'"+f.ne+"/"+f.deno+" ";
 	}
 	 /**************
 	   void fh1{                                               //只有一个运算符的情况
