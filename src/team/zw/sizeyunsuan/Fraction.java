@@ -55,8 +55,19 @@ public class Fraction {
 	public Fraction sub(Fraction n1, Fraction n2) {
 		
 		//判断不出现负数,要在这里实现吗？还是在生成后再判断？
-		
+		//如果被减数大于减数，则n = -1;
 		Fraction f1 = new Fraction();
+		
+		if(n1.deno != 0 && n2.deno != 0) {
+			if((n1.n + n1.ne/n1.deno) < (n2.n + n2.ne/n2.deno)) {
+				f1.n = -1;
+				return f1;
+			}
+		} else {
+			
+		}
+		
+
 		if(n1.ne>0&&n2.ne>0) {
 			
 			int lc = lcm(n1.deno,n2.deno);
@@ -71,6 +82,7 @@ public class Fraction {
 			
 			
 			int g = gcd(newdeno, newne);
+			
 			
 			f1.n = newn;
 			f1.ne = newne/g;

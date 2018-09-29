@@ -57,7 +57,9 @@ public class Generate{
 			String str2 = getstring() + opch() + getstring() + opch() +" ("+ getstring() + opch() + getstring() + ")";
 			String str3 = " ("+getstring() + opch() + getstring() + opch()  + ")"+ getstring() + opch() + getstring();
 			String str4 = getstring() + opch() +" ("+ getstring() + opch() + getstring() + opch() + getstring() + ")";
-			String str5 = " ("+getstring() + opch() + getstring() + ")" + opch() + " (" +  getstring() + opch() + getstring() + ")";
+
+			String str5 = " (" + getstring() + opch() + getstring() + ")" + opch() + " ("+ getstring() + opch() + getstring() + ")";
+			
 			switch(a) {
 			
 			case(0):
@@ -84,7 +86,7 @@ public class Generate{
 		return "";
 		
 	}
-	
+
 	Fraction rand2() {
 		int n1 =(int)(Math.random()*2);
 		if(n1==0) {
@@ -119,15 +121,7 @@ public class Generate{
 		Fraction f = rand2();
 		return " "+f.n+"'"+f.ne+"/"+f.deno+" ";
 	}
-	 /**************
-	   void fh1{                                               //只有一个运算符的情况
-	  //报错：void is an invalid type for the variable fh1
-			Fraction f1 = rand(10);
-			Fraction f2 = rand(10);
-			String s1  =  opch();
-			System.out.printf("e = %d %d/%d   %s  %d %d/%d",f1.n ,f1.nm,f1.deno,s1,
-					f2.n ,f2.nm,f2.deno);   
-	}***************/
+
 	
 	
 }
