@@ -5,12 +5,7 @@ import java.util.*;
 import com.sun.javafx.collections.MappingChange.Map;
 
 public class BinTree {
-<<<<<<< HEAD
-    
 
-=======
-	
->>>>>>> 5d775e7cd688760652783f066477fc9ca364943e
 
  
     /**
@@ -109,92 +104,7 @@ public class BinTree {
         TreeNode left;
         TreeNode right;
 
-<<<<<<< HEAD
-        
-        public TreeNode(Object val)
-        {
-            this.val = val;
-        }
-        
-        /**
-         * 求左右子树的深度
-         * @param root
-         * @return
-         */
-        
-        public int treeDepth(TreeNode root) {
-            if(root == null){
-                return 0;
-            }
-            int left = treeDepth(root.left);
-            int right = treeDepth(root.right);
-            
-            return (left>right)?(left+1):(right+1);
-        }
-        
-        /**
-         * 规范化树
-         * @param d
-         * return
-         */
-//        public String fixTree(TreeNode tree) {
-//            TreeNode temp;
-//            HashMap<String, Integer> result = new HashMap<String, Integer>();
-//              result.put("Zara", 8);
-//              result.put("Mahnaz", 31);
-//            
-//              if((treeDepth(tree.left) == 1) && (treeDepth(tree.right) == 1) && (tree.val.equals("+")||tree.val.equals("*"))) {
-//                if((toInt(tree.left.val)) < toInt(tree.right.val)) {
-//                    temp = tree.left;
-//                    tree.left = tree.right;
-//                    tree.right = temp;
-//                }
-//                
-//            } else if((treeDepth(tree.left) == 1) && (treeDepth(tree.right) == 1) && (tree.val.equals("-"))) {
-//                if(toInt(tree.left.val) < toInt(tree.right.val)) {
-//                    tree = null;
-//                }
-//            } else if(Math.abs(toInt(tree.left.val)-toInt(tree.right) == 1)) {
-//                if
-//            }
-//        }
-        
-        
-        /**
-         * 打印指定深度的数下节点
-         * @param d
-         */
-        public void print(int d)
-        {
-            StringBuilder printStrBuilder=new StringBuilder("");
-            for(int i=0;i<d;i++)
-            {
-                printStrBuilder.append("- ");
-            }
-            printStrBuilder.append(val);
-            System.out.println(printStrBuilder);
-            
-            if(left!=null)
-            {
-                left.print(d+1);
-            }
-            if(right!=null)
-            {
-                right.print(d+1);
-            }
-        }
-        
-        /**
-         * 打印整棵树
-         */
-        public void printAll()
-        {
-            print(0);
-        }
-        
-        
-    }       
-=======
+
 		
 		public TreeNode(Object val)
 		{
@@ -237,7 +147,7 @@ public class BinTree {
 			} else if(Math.abs(toInt(tree.left.val)-toInt(tree.right)) < 0) {
 				
 			}
-			return 0;
+			return tree;
 		}
 		
 		
@@ -275,7 +185,7 @@ public class BinTree {
 		
 		
 	}		
->>>>>>> 5d775e7cd688760652783f066477fc9ca364943e
+
 
 
 }

@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 
 import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
+import sun.launcher.resources.launcher;
+
 import java.util.Stack;
 
 public class Standard {
@@ -19,7 +21,7 @@ public class Standard {
 	    basic.put("(", 0);//在运算中  （）的优先级最高，但是此处因程序中需要 故设置为0
 	   }
 	
-	public static void translation(String e) {
+	public static String translation(String e) {
 		Stack<String> operator = new Stack<String>();
 		
 		String newEx = "";
@@ -31,7 +33,7 @@ public class Standard {
 
 		
 		for(int i = 0; i < items.length; i++) {
-			System.out.println(items[i]);
+//			System.out.println(items[i]);
 			//检验是否是运算符
 			if(isOperator(items[i])) {
 				
@@ -75,7 +77,8 @@ public class Standard {
 		}
 		
 		operator = null;
-		System.out.printf(newEx);
+		System.out.printf(newEx + "\n");
+		return newEx;
 	}
 	
 	
@@ -86,20 +89,25 @@ public class Standard {
 		
 	}
 	
-	public String calculator(String e) {
+	public static Fraction calculator(String e) {
 		Stack<Fraction> operand = new Stack<Fraction>();
 		String[] items = e.split(" ");
 		
-		for(int i = 0; i < items.length - 1; i++) {
+		for(int i = 0; i < items.length; i++) {
 			if(isOperator(items[i])) {
 				Fraction opb = operand.pop();
 				Fraction opa = operand.pop();
 				Fraction fraction = new Fraction();
+				System.out.println(items[i]);
 				switch (items[i]) {
 				case "+":
 					operand.push(fraction.add(opa, opb));
 					break;
 				case "-":
+					if(fraction.sub(opa, opb).n == -1) {
+						System.out.print("aaa");
+						return fraction;
+					}
 					operand.push(fraction.sub(opa, opb));
 					break;
 				case "x":
@@ -112,6 +120,7 @@ public class Standard {
 					break;
 				}
 			} else {
+
 				Fraction f = new Fraction();
 				String[] str = items[i].split("'");
 				f.n = Integer.parseInt(str[0]);
@@ -121,12 +130,19 @@ public class Standard {
 				operand.push(f);
 			}
 		}
-		return "";
+		return operand.pop();
 	}
 	
 	public static void main(String[] args) throws IOException {
-//		Standard.translation("8 ÷ ( 5 - 4 ) + 7");
-//		BinTree.suffixExpression2Tree("854-/7+");
+		String expression = "2'3/4 ÷ ( 2'0/0 - 4'0/0 ) + 1'5/7";
+		String suffix = Standard.translation(expression);
+		Fraction f = new Fraction();
+		f = Standard.calculator(suffix);
+		if(f.n == -1) {
+			System.out.print("不合法");
+		}
+		System.out.print(f.n + "'" + f.ne + "/" + f.deno);
+		
 		
 	}
 	
