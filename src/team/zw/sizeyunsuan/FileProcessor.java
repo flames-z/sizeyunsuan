@@ -54,12 +54,8 @@ public class FileProcessor {
         FileOutputStream fileOutputStream=null;
         try {
             fileOutputStream = new FileOutputStream(filepath, true);
-<<<<<<< HEAD
-            fileOutputStream.write(newstr.getBytes("gbk"));
-=======
             fileOutputStream.write(newstr.getBytes());
             fileOutputStream.write("\r\n".getBytes());
->>>>>>> 43afca1f474bff0c2790e81d71c3e19a8f786cb5
             fileOutputStream.close();
             flag=true;
         } catch (Exception e) {
