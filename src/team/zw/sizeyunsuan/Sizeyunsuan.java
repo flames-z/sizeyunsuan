@@ -21,7 +21,23 @@ public class Sizeyunsuan {
 	        
 	        System.out.println(titleNum);
 	        System.out.println(numRange);
-	        
-//		}
+	     
+	    	int r =  Integer.valueOf(titleNum).intValue();
+	    	Generate g = new Generate(r);
+	    	FileProcessor f = new FileProcessor();
+	    	
+	    	int range =  Integer.valueOf(numRange).intValue();
+	    	int i = 1;	
+	    		while(range!=0) {
+	    			System.out.printf("%d. ",i);
+	    			String ex = g.expression();
+	    			System.out.println(ex);
+	    			f.writeFileContent(ex, "D://sizeyunsuan//Exercise.txt");
+	    			i++;
+	    			range--;	
+	    		}
+	    		
+	    		
 	}
+	
 }

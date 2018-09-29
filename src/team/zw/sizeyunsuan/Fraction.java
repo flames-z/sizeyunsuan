@@ -1,22 +1,22 @@
 package team.zw.sizeyunsuan;
 
-public class Calculate {
+public class Fraction {
 	int n;//大于1真分数前面的数
 	int ne;//分子
 	int deno;//分母
 	
-	public Calculate() {
+	public Fraction() {
 		
 	}
 	
-	public Calculate(fraction f) {
+	public Fraction(Fraction f) {
 		this.n = f.n;
 		this.ne = f.ne;
 		this.deno = f.deno;
 	}
 	
-	public Calculate add(fraction n1, fraction n2){
-		fraction f1 = new fraction();
+	public Fraction add(Fraction n1, Fraction n2){
+		Fraction f1 = new Fraction();
 		if(n1.ne>0&&n2.ne>0) {
 			
 			//int newne = n1.ne * n2.deno + n1.deno * n2.ne+n1.n*n1.deno*n2.deno+n2.n*n2.deno*n1.deno;
@@ -36,27 +36,27 @@ public class Calculate {
 			f1.n = newn;
 			f1.ne = newne/g;
 			f1.deno = newdeno/g;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 		else if(n1.ne>0||n2.ne>0) {
 			f1.n= n1.n+n2.n;
 			f1.deno = n1.deno + n2.deno;
 			f1.ne = n1.ne+n2.ne;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}	
 		else {
 			f1.n= n1.n+n2.n;
 			f1.deno = 0;
 			f1.ne = 0;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 	}
 	
-	public Calculate sub(fraction n1, fraction n2) {
+	public Fraction sub(Fraction n1, Fraction n2) {
 		
 		//判断不出现负数,要在这里实现吗？还是在生成后再判断？
 		
-		fraction f1 = new fraction();
+		Fraction f1 = new Fraction();
 		if(n1.ne>0&&n2.ne>0) {
 			
 			int lc = lcm(n1.deno,n2.deno);
@@ -75,23 +75,23 @@ public class Calculate {
 			f1.n = newn;
 			f1.ne = newne/g;
 			f1.deno = newdeno/g;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 		else if(n1.ne>0||n2.ne>0) {
 			f1.n= n1.n-n2.n-1;
 			f1.deno =n1.deno + n2.deno;
 			f1.ne = n1.deno+n2.deno-(n1.ne+n2.ne);
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}	
 		else {
 			f1.n= n1.n-n2.n;
 			f1.deno = 0;
 			f1.ne = 0;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}		
 	}
-	public Calculate mul(fraction n1, fraction n2) {
-		fraction f1 = new fraction();
+	public Fraction mul(Fraction n1, Fraction n2) {
+		Fraction f1 = new Fraction();
 		if(n1.ne>0&&n2.ne>0) {
 			
 			int newne = (n1.n*n1.deno+n1.ne)*(n2.n*n2.deno+n2.ne);
@@ -109,7 +109,7 @@ public class Calculate {
 			f1.n = newn;
 			f1.ne = newne/g;
 			f1.deno = newdeno/g;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 		
 		else if(n1.ne>0||n2.ne>0) {
@@ -125,18 +125,18 @@ public class Calculate {
 			f1.ne = newne/g;
 			f1.n =  n1.n*n2.n+newn;
 			
-			return new Calculate(f1);
+			return new Fraction(f1);
 			}
 	
 		else {
 			f1.n= n1.n*n2.n;
 			f1.deno = 0;
 			f1.ne = 0;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}		
 	}
-	public Calculate div(fraction n1, fraction n2) {
-		fraction f1 = new fraction();
+	public Fraction div(Fraction n1, Fraction n2) {
+		Fraction f1 = new Fraction();
 		if(n1.ne>0&&n2.ne>0) {
 			
 			int newne = (n1.n*n1.deno+n1.ne)*n2.deno;
@@ -154,7 +154,7 @@ public class Calculate {
 			f1.n = newn;
 			f1.ne = newne/g;
 			f1.deno = newdeno/g;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 		
 		else if(n2.ne>0) {
@@ -172,7 +172,7 @@ public class Calculate {
 			f1.ne = newne/g;
 			f1.n =  n1.n*n2.n+newn;
 			
-			return new Calculate(f1);
+			return new Fraction(f1);
 			}
 		else if(n1.ne>0) {
 			int newne = n1.n*n1.deno+n1.ne;
@@ -190,14 +190,14 @@ public class Calculate {
 			f1.n = newn;
 			f1.ne = newne/g;
 			f1.deno = newdeno/g;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}
 	
 		else {
 			f1.n= n1.n/n2.n;
 			f1.deno = n1.n;			
 			f1.ne = n2.n-f1.n*f1.deno;
-			return new Calculate(f1);
+			return new Fraction(f1);
 		}		
 	}
 	public int gcd(int a, int b) {   //求最大公因子
@@ -218,7 +218,7 @@ public class Calculate {
 	}
 	 
 	
-	public int compare(fraction f1 , fraction f2) {
+	public int compare(Fraction f1 , Fraction f2) {
 		if (f1.n>f2.n)
 			return 1;
 		
