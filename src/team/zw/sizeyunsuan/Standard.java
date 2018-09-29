@@ -23,17 +23,16 @@ public class Standard {
 		Stack<String> operator = new Stack<String>();
 		
 		String newEx = "";
-		
-		String operators = "+-x÷";
+
 		String[] items = e.split(" ");
-		System.out.println(items[2].equals("("));
+//		System.out.println(items[2].equals("("));
 		
 		
 
 		
 		for(int i = 0; i < items.length; i++) {
 			System.out.println(items[i]);
-			if(operators.indexOf(items[i]) != -1) {
+			if(isOperator(items[i])) {
 				if(operator.empty() == false) {
 					while(operator.empty() != true) {
 						if(basic.get(operator.peek()) >= basic.get(items[i])) {
@@ -49,15 +48,16 @@ public class Standard {
 			} else {
 				
 				if(items[i].equals(")")) {
-					System.out.println("aaa");
-//					while(operator.peek().equals("(") != true) {
-//						newEx = newEx + operator.pop();
-//					}
+//					System.out.println("aaa");
+					while(operator.peek().equals("(") != true) {
+						newEx = newEx + operator.pop();
+					}
 //					
-//					operator.pop();
+					operator.pop();
 				}
 				else 
 				if(items[i].equals("(")) {
+//					System.out.println("bbb");
 //					System.out.println(operator.peek());
 					operator.push(items[i]);
 //					System.out.println(operator.peek());
@@ -75,6 +75,18 @@ public class Standard {
 		
 		operator = null;
 		System.out.printf(newEx);
+	}
+	
+	public void Calculator(String e) {
+		String[] items = e.split("");
+		
+	}
+	
+	public static boolean isOperator(String str) {
+		String operators = "+-x÷";
+		if(operators.indexOf(str) == -1) return false;
+		else return true;
+		
 	}
 	
 	public static void main(String[] args) throws IOException {
