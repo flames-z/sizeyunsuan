@@ -16,7 +16,7 @@ public class Standard {
 	 static {
 	    basic.put("-", 1);
         basic.put("+", 1);
-	    basic.put("x", 2);
+	    basic.put("×", 2);
 	    basic.put("÷", 2);
 	    basic.put("(", 0);//在运算中  （）的优先级最高，但是此处因程序中需要 故设置为0
 	   }
@@ -38,6 +38,7 @@ public class Standard {
 			if(isOperator(items[i])) {
 				
 				if(operator.empty() == false) {
+
 					while(basic.get(operator.peek()) >= basic.get(items[i])) {
 						newEx = newEx + operator.pop() + " ";
 						if(operator.empty()) break;
@@ -48,6 +49,7 @@ public class Standard {
 					
 					
 				} else {
+
 					operator.push(items[i]);
 				}
 			} else {
@@ -83,7 +85,8 @@ public class Standard {
 	
 	
 	public static boolean isOperator(String str) {
-		String operators = "+-x÷";
+		String operators = "+-×÷"; 
+
 		if(operators.indexOf(str) == -1) return false;
 		else return true;
 		
@@ -98,7 +101,7 @@ public class Standard {
 				Fraction opb = operand.pop();
 				Fraction opa = operand.pop();
 				Fraction fraction = new Fraction();
-				System.out.println(items[i]);
+//				System.out.println(items[i]);
 				switch (items[i]) {
 				case "+":
 					operand.push(fraction.add(opa, opb));
@@ -133,19 +136,20 @@ public class Standard {
 		return operand.pop();
 	}
 	
-	public static 
-	
-	public static void main(String[] args) throws IOException {
-		String expression = "2'3/4 ÷ ( 2'0/0 - 4'0/0 ) + 1'5/7";
-		String suffix = Standard.translation(expression);
-		Fraction f = new Fraction();
-		f = Standard.calculator(suffix);
-		if(f.n == -1) {
-			System.out.print("不合法");
-		}
-		System.out.print(f.n + "'" + f.ne + "/" + f.deno);
-		
-		
-	}
+
+//	public static void main(String[] args) throws IOException {
+//		String expression = "2'3/4 ÷ ( 2'0/0 - 4'0/0 ) + 1'5/7";
+//		String suffix = Standard.translation(expression);
+//		Fraction f = new Fraction();
+//		f = Standard.calculator(suffix);
+//		if(f.n == -1) {
+//			System.out.print("不合法");
+//		}
+//		System.out.print(f.n + "'" + f.ne + "/" + f.deno);
+//		String s = "8'0/0";
+//		System.out.print(isOperator(s));
+//		
+//	}
+
 	
 }
