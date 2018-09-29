@@ -10,7 +10,7 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 import java.util.Stack;
 
 public class Standard {
-	private static final Map<String, Integer> basic = new HashMap<String, Integer>();
+	public static final Map<String, Integer> basic = new HashMap<String, Integer>();
 	 static {
 	    basic.put("-", 1);
         basic.put("+", 1);
@@ -34,10 +34,10 @@ public class Standard {
 			System.out.println(items[i]);
 			if(isOperator(items[i])) {
 				if(operator.empty() == false) {
-					while(operator.empty() != true) {
-						if(basic.get(operator.peek()) >= basic.get(items[i])) {
-							newEx = newEx + operator.pop();
-						}
+					while(basic.get(operator.peek()) >= basic.get(items[i])) {
+						newEx = newEx + operator.pop() + " ";
+						if(operator.empty()) break;
+					
 					}
 					operator.push(items[i]);
 					
@@ -48,39 +48,32 @@ public class Standard {
 			} else {
 				
 				if(items[i].equals(")")) {
-//					System.out.println("aaa");
 					while(operator.peek().equals("(") != true) {
-						newEx = newEx + operator.pop();
+						newEx = newEx + operator.pop() + " ";
 					}
 //					
 					operator.pop();
 				}
 				else 
 				if(items[i].equals("(")) {
-//					System.out.println("bbb");
-//					System.out.println(operator.peek());
 					operator.push(items[i]);
-//					System.out.println(operator.peek());
+
 				}
 				else {
-					newEx = newEx + items[i];
+					newEx = newEx + items[i] + " ";
 				}
 				
 			}
 		}
 		
 		while(operator.empty() == false) {
-			newEx = newEx + operator.pop();
+			newEx = newEx + operator.pop() + " ";
 		}
 		
 		operator = null;
 		System.out.printf(newEx);
 	}
 	
-	public void Calculator(String e) {
-		String[] items = e.split("");
-		
-	}
 	
 	public static boolean isOperator(String str) {
 		String operators = "+-x÷";
@@ -89,8 +82,48 @@ public class Standard {
 		
 	}
 	
+	public String calculator(String e) {
+		Stack<Fraction> operand = new Stack<Fraction>();
+		String[] items = e.split(" ");
+		
+		for(int i = 0; i < items.length - 1; i++) {
+			if(isOperator(items[i])) {
+				Fraction opb = operand.pop();
+				Fraction opa = operand.pop();
+				Fraction fraction = new Fraction();
+				switch (items[i]) {
+				case "+":
+					operand.push(fraction.add(opa, opb));
+					break;
+				case "-":
+					operand.push(fraction.sub(opa, opb));
+					break;
+				case "x":
+					operand.push(fraction.mul(opa, opb));
+					break;
+				case "÷":
+					operand.push(fraction.div(opa, opb));
+					break;
+				default:
+					break;
+				}
+			} else {
+				Fraction f = new Fraction();
+				String[] str = items[i].split("'");
+				f.n = Integer.parseInt(str[0]);
+				f.ne = Integer.parseInt(str[1].split("/")[0]);
+				f.deno = Integer.parseInt(str[1].split("/")[1]);
+				
+				operand.push(f);
+			}
+		}
+		return "";
+	}
+	
 	public static void main(String[] args) throws IOException {
-		Standard.translation("8 ÷ ( 5 - 4 ) + 7");
+//		Standard.translation("8 ÷ ( 5 - 4 ) + 7");
+//		BinTree.suffixExpression2Tree("854-/7+");
+		
 	}
 	
 }
