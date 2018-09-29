@@ -7,17 +7,6 @@ import java.util.Stack;
 
 public class BinTree {
 	
-//	private BinTree lChild;//左孩子	
-//	private BinTree rChild;//右孩子	
-//	private BinTree root;//根节点	
-//	private String data; //数据域	
-//	private List<BinTree> datas;//存储所有的节点	
-//	public BinTree(BinTree lChild, BinTree rChild, String data) {		
-//		super();		
-//		this.lChild = lChild;		
-//		this.rChild = rChild;		
-//		this.data = data;	
-//	}
 
  
 	/**
@@ -155,7 +144,10 @@ public class BinTree {
 				if(toInt(tree.left.val) < toInt(tree.right.val)) {
 					tree = null;
 				}
-			} else if(Math.abs(toInt(tree.left.val)-toInt(tree.right)))
+			} else if(Math.abs(toInt(tree.left.val)-toInt(tree.right)) < 0) {
+				
+			}
+			return 0;
 		}
 		
 		
