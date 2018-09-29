@@ -1,5 +1,6 @@
 package team.zw.sizeyunsuan;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Sizeyunsuan {
@@ -34,12 +35,14 @@ public class Sizeyunsuan {
 	    			Standard s = new Standard();
 	    			Fraction ff = new Fraction();
 	    			ff = s.calculator(s.translation(e));
-	    			String fs = i + "." + ff.n +"'" +  ff.ne + "/"+ ff.deno ;
+	    			String fs = i + ". " + ff.n +"'" +  ff.ne + "/"+ ff.deno ;
 	    			
 	    			String ex = i + ". "+ g.shuchu(e) ;
 	    			System.out.println(ex);
-	    			f.writeFileContent(ex, "D://sizeyunsuan//Exercise.txt");
-	    			f.writeFileContent(fs, "D://sizeyunsuan//Answers.txt");
+	    			String root = System.getProperty("user.dir");
+	    			
+	    			f.writeFileContent(ex, root + File.separator + "Exercise.txt");
+	    			f.writeFileContent(fs, root + File.separator + "Answers.txt");
 	    			i++;
 	    			range--;	
 	    		}
