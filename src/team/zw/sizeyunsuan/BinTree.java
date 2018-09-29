@@ -6,6 +6,20 @@ import java.util.Spliterator;
 import java.util.Stack;
 
 public class BinTree {
+	
+//	private BinTree lChild;//左孩子	
+//	private BinTree rChild;//右孩子	
+//	private BinTree root;//根节点	
+//	private String data; //数据域	
+//	private List<BinTree> datas;//存储所有的节点	
+//	public BinTree(BinTree lChild, BinTree rChild, String data) {		
+//		super();		
+//		this.lChild = lChild;		
+//		this.rChild = rChild;		
+//		this.data = data;	
+//	}
+
+ 
 	/**
 	 * 后缀表达式转二叉表达式树
 	 * @param suffixStr
@@ -75,6 +89,11 @@ public class BinTree {
 		return false;
 	}
 	
+	public static int toInt(Object o) {
+		return Integer.parseInt(o.toString());
+	}
+
+	
 	
 	/**
 	 * @param args
@@ -96,11 +115,49 @@ public class BinTree {
 		Object val;
 		TreeNode left;
 		TreeNode right;
+
 		
 		public TreeNode(Object val)
 		{
 			this.val = val;
 		}
+		
+		/**
+		 * 求左右子树的深度
+		 * @param root
+		 * @return
+		 */
+		
+		public int treeDepth(TreeNode root) {
+			if(root == null){
+	            return 0;
+	        }
+	        int left = treeDepth(root.left);
+	        int right = treeDepth(root.right);
+	        
+	        return (left>right)?(left+1):(right+1);
+		}
+		
+		/**
+		 * 规范化树
+		 * @param d
+		 * return
+		 */
+		public TreeNode fixTree(TreeNode tree) {
+			TreeNode temp;
+			if((treeDepth(tree.left) == 1) && (treeDepth(tree.right) == 1) && (tree.val.equals("+")||tree.val.equals("*"))) {
+				if((toInt(tree.left.val)) < toInt(tree.right.val)) {
+					temp = tree.left;
+					tree.left = tree.right;
+					tree.right = temp;
+				}
+			} else if((treeDepth(tree.left) == 1) && (treeDepth(tree.right) == 1) && (tree.val.equals("-"))) {
+				if(toInt(tree.left.val) < toInt(tree.right.val)) {
+					tree = null;
+				}
+			} else if(Math.abs(toInt(tree.left.val)-toInt(tree.right)))
+		}
+		
 		
 		/**
 		 * 打印指定深度的数下节点
@@ -133,6 +190,8 @@ public class BinTree {
 		{
 			print(0);
 		}
+		
+		
 	}		
 
 
