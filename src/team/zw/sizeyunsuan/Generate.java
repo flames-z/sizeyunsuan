@@ -12,13 +12,13 @@ public class Generate{
 	String opch(){
 		int n1 = (int)(Math.random()*4+1);
 		if(n1==1)
-			return "+";
+			return " + ";
 		else if (n1==2)
-			return "-";
+			return " - ";
 		else if (n1==3)
-			return "✖";
+			return " × ";
 		else
-			return "➗";
+			return " ÷ ";
 	}
 	public String expression(){
 		
@@ -26,7 +26,7 @@ public class Generate{
 
 		if(randd==0){                                                         //一个运算符
 			
-			String str = getstring()+"+"+getstring();     
+			String str = getstring() + opch() + getstring();     
 			return str;
 			
 			}
@@ -34,8 +34,8 @@ public class Generate{
 		else if (randd==1) {
 			int a = (int)(Math.random()*3);
 			String str0 =  getstring() + opch() + getstring() + opch() + getstring();
-			String str1 = " ("+ getstring() + opch() + getstring() + ")" + opch() + getstring();
-			String str2 = getstring() + opch() + " (" + getstring() + opch() + getstring() + ")";
+			String str1 = "( "+ getstring() + opch() + getstring() + " )" + opch() + getstring();
+			String str2 = getstring() + opch() + "( " + getstring() + opch() + getstring() + " )";
 			switch(a) {
 			
 			case(0):
@@ -52,13 +52,13 @@ public class Generate{
 		else {
 			
 			int a = (int)(Math.random()*6);
-			String str0 = " ("+getstring() + opch() + getstring() + ")" + opch() + getstring() + opch() + getstring();
-			String str1 = getstring() + opch() +" ("+ getstring() + opch() + getstring() + ")" + opch() + getstring();
-			String str2 = getstring() + opch() + getstring() + opch() +" ("+ getstring() + opch() + getstring() + ")";
-			String str3 = " ("+getstring() + opch() + getstring() + opch()  + ")"+ getstring() + opch() + getstring();
-			String str4 = getstring() + opch() +" ("+ getstring() + opch() + getstring() + opch() + getstring() + ")";
+			String str0 = "( "+getstring() + opch() + getstring() + " )" + opch() + getstring() + opch() + getstring();
+			String str1 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + " )" + opch() + getstring();
+			String str2 = getstring() + opch() + getstring() + opch() +"( "+ getstring() + opch() + getstring() + " )";
+			String str3 = "( "+getstring() + opch() + getstring() + opch()  + getstring() + " )" + opch() + getstring();
+			String str4 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + opch() + getstring() + " )";
 
-			String str5 = " (" + getstring() + opch() + getstring() + ")" + opch() + " ("+ getstring() + opch() + getstring() + ")";
+			String str5 = "( " + getstring() + opch() + getstring() + " )" + opch() + "( "+ getstring() + opch() + getstring() + " )";
 			
 			switch(a) {
 			
@@ -119,10 +119,16 @@ public class Generate{
 	String getstring() {
 		
 		Fraction f = rand2();
-		return " "+f.n+"'"+f.ne+"/"+f.deno+" ";
+		return f.n+"'"+f.ne+"/"+f.deno;
 	}
 
-	
+	String shuchu(String s) {
+	String str1 = "0'";
+	String str2 = "'0/0";
+	String news = s.replace(str2, "");
+	return news.replace(str1, "");
+		
+	}
 	
 }
 

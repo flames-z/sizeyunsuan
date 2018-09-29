@@ -29,10 +29,17 @@ public class Sizeyunsuan {
 	    	int range =  Integer.valueOf(numRange).intValue();
 	    	int i = 1;	
 	    		while(range!=0) {
-	    			System.out.printf("%d. ",i);
-	    			String ex = g.expression();
+	    			String e = g.expression();
+	    			System.out.println("e = " + e + "\n");
+	    			Standard s = new Standard();
+	    			Fraction ff = new Fraction();
+	    			ff = s.calculator(s.translation(e));
+	    			String fs = i + "." + ff.n +"'" +  ff.ne + "/"+ ff.deno ;
+	    			
+	    			String ex = i + ". "+ g.shuchu(e) ;
 	    			System.out.println(ex);
 	    			f.writeFileContent(ex, "D://sizeyunsuan//Exercise.txt");
+	    			f.writeFileContent(fs, "D://sizeyunsuan//Answers.txt");
 	    			i++;
 	    			range--;	
 	    		}

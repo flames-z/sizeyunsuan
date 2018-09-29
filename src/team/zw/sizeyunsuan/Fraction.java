@@ -109,7 +109,7 @@ public class Fraction {
 			int newne = (n1.n*n1.deno+n1.ne)*(n2.n*n2.deno+n2.ne);
 			int newdeno = n1.deno * n2.deno;
 			int newn;
-			if(newdeno < newne) {
+			if(newdeno < newne && newdeno>0) {
 				newn = newne/newdeno;
 			}
 			else newn =0;
