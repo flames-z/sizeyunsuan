@@ -53,7 +53,7 @@ public class FileProcessor {
         boolean flag=false;
         FileOutputStream fileOutputStream=null;
         try {
-            fileOutputStream = new FileOutputStream(filepath);
+            fileOutputStream = new FileOutputStream(filepath, true);
             fileOutputStream.write(newstr.getBytes("gbk"));
             fileOutputStream.close();
             flag=true;
