@@ -32,11 +32,14 @@ public class Standard {
 		
 		for(int i = 0; i < items.length; i++) {
 			System.out.println(items[i]);
+			//检验是否是运算符
 			if(isOperator(items[i])) {
+				
 				if(operator.empty() == false) {
 					while(basic.get(operator.peek()) >= basic.get(items[i])) {
 						newEx = newEx + operator.pop() + " ";
 						if(operator.empty()) break;
+
 					
 					}
 					operator.push(items[i]);
@@ -51,11 +54,12 @@ public class Standard {
 					while(operator.peek().equals("(") != true) {
 						newEx = newEx + operator.pop() + " ";
 					}
-//					
+					
 					operator.pop();
 				}
 				else 
 				if(items[i].equals("(")) {
+
 					operator.push(items[i]);
 
 				}

@@ -21,6 +21,7 @@ public class FileProcessor {
 			BufferedReader bReader = new BufferedReader(isr);
 			String string = null;
 			while((string = bReader.readLine()) != null) {
+				
 				string = string.trim();
 			}
 			isr.close();
