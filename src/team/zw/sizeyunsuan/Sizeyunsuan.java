@@ -1,7 +1,11 @@
 package team.zw.sizeyunsuan;
 
+<<<<<<< HEAD
 import java.util.LinkedList;
 import java.util.Queue;
+=======
+import java.io.File;
+>>>>>>> 3eb0f40e4ecf7a05f914f868924209aae80ebada
 import java.util.Scanner;
 
 public class Sizeyunsuan {
@@ -19,6 +23,7 @@ public class Sizeyunsuan {
 	        System.out.println("请选择操作：1. 生成题目     2. 检查答案");
 	        Scanner command = new Scanner(System.in);
 	        
+<<<<<<< HEAD
 	        String op = command.nextLine();
 	        if(op.equals("1")) {
 	        	System.out.println("请输入命令： ");
@@ -102,6 +107,37 @@ public class Sizeyunsuan {
 			    FileProcessor.writeFileContent("错误数量：" + countW, "Grade.txt");
 
 	    		
+=======
+	        String titleNum = command.nextLine().split(" ")[1];
+	        String numRange = command.nextLine().split(" ")[1];
+	        
+	        System.out.println(titleNum);
+	        System.out.println(numRange);
+	     
+	    	int r =  Integer.valueOf(titleNum).intValue();
+	    	Generate g = new Generate(r);
+	    	FileProcessor f = new FileProcessor();
+	    	
+	    	int range =  Integer.valueOf(numRange).intValue();
+	    	int i = 1;	
+	    		while(range!=0) {
+	    			String e = g.expression();
+	    			System.out.println("e = " + e + "\n");
+	    			Standard s = new Standard();
+	    			Fraction ff = new Fraction();
+	    			ff = s.calculator(s.translation(e));
+	    			String fs = i + ". " + ff.n +"'" +  ff.ne + "/"+ ff.deno ;
+	    			
+	    			String ex = i + ". "+ g.shuchu(e) ;
+	    			System.out.println(ex);
+	    			String root = System.getProperty("user.dir");
+	    			
+	    			f.writeFileContent(ex, root + File.separator + "Exercise.txt");
+	    			f.writeFileContent(fs, root + File.separator + "Answers.txt");
+	    			i++;
+	    			range--;	
+	    		}
+>>>>>>> 3eb0f40e4ecf7a05f914f868924209aae80ebada
 	    		
 	        } else {
 	        	System.out.println("命令输入有误，请重新输入命令 ");

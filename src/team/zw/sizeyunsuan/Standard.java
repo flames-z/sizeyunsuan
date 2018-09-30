@@ -140,6 +140,7 @@ public class Standard {
 		return operand.pop();
 	}
 	
+
 //	public static void main(String[] args) throws IOException {
 //		String expression = "2'3/4 ÷ ( 2'0/0 - 4'0/0 ) + 1'5/7";
 //		String suffix = Standard.translation(expression);
@@ -153,5 +154,6 @@ public class Standard {
 //		System.out.print(isOperator(s));
 //		
 //	}
+
 	
 }
