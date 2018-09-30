@@ -7,6 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import jdk.management.resource.internal.inst.FileChannelImplRMHooks;
 
@@ -15,20 +19,26 @@ public class FileProcessor {
 		
 	}
 	
-	public static void readFile(String filePath) {
+	public static Queue readFile(String filePath) {
+		Queue<String> queue = new LinkedList<String>();
+		
 		try {
 			InputStreamReader isr = new InputStreamReader(new FileInputStream(filePath), "utf-8");
 			BufferedReader bReader = new BufferedReader(isr);
 			String string = null;
+
+//			System.out.print(bReader.readLine());
 			while((string = bReader.readLine()) != null) {
-				
-				string = string.trim();
+				string = string.split(" ")[1];
+				queue.offer(string);
 			}
 			isr.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			
 		}
+		return queue;
 	}
 	
 	public static void exportFile() throws IOException {		

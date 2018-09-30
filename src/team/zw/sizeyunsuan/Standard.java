@@ -107,9 +107,9 @@ public class Standard {
 					operand.push(fraction.add(opa, opb));
 					break;
 				case "-":
-					if(fraction.sub(opa, opb).n == -1) {
-						System.out.print("aaa");
-						return fraction;
+					Fraction f = fraction.sub(opa, opb);
+					if(f.n == -1) {
+						return f;
 					}
 					operand.push(fraction.sub(opa, opb));
 					break;
@@ -117,6 +117,10 @@ public class Standard {
 					operand.push(fraction.mul(opa, opb));
 					break;
 				case "÷":
+					Fraction fr = fraction.div(opa, opb);
+					if(fr.n == -1) {
+						return fr;
+					}
 					operand.push(fraction.div(opa, opb));
 					break;
 				default:
