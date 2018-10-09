@@ -1,11 +1,8 @@
 package team.zw.sizeyunsuan;
 
-<<<<<<< HEAD
 import java.util.LinkedList;
 import java.util.Queue;
-=======
 import java.io.File;
->>>>>>> 3eb0f40e4ecf7a05f914f868924209aae80ebada
 import java.util.Scanner;
 
 public class Sizeyunsuan {
@@ -23,7 +20,7 @@ public class Sizeyunsuan {
 	        System.out.println("请选择操作：1. 生成题目     2. 检查答案");
 	        Scanner command = new Scanner(System.in);
 	        
-<<<<<<< HEAD
+
 	        String op = command.nextLine();
 	        if(op.equals("1")) {
 	        	System.out.println("请输入命令： ");
@@ -107,7 +104,7 @@ public class Sizeyunsuan {
 			    FileProcessor.writeFileContent("错误数量：" + countW, "Grade.txt");
 
 	    		
-=======
+/***********
 	        String titleNum = command.nextLine().split(" ")[1];
 	        String numRange = command.nextLine().split(" ")[1];
 	        
@@ -137,8 +134,7 @@ public class Sizeyunsuan {
 	    			i++;
 	    			range--;	
 	    		}
->>>>>>> 3eb0f40e4ecf7a05f914f868924209aae80ebada
-	    		
+	    		**************/
 	        } else {
 	        	System.out.println("命令输入有误，请重新输入命令 ");
 	        	continue;

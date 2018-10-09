@@ -1,10 +1,8 @@
 package team.zw.sizeyunsuan;
 
-import java.util.Random;
 
 public class Generate{
 	int n,r;
-	Random ra = new Random();	
 	
 	public Generate(int r) {
 		this.r = r;
@@ -12,24 +10,19 @@ public class Generate{
 	
 	//随机出一个运算符
 	String opch(){
-		
-		int a = ra.nextInt(4);
-		if (a==0) {
+		int n1 = (int)(Math.random()*4+1);
+		if(n1==1)
 			return " + ";
-		}
-		else if (a==1) {
+		else if (n1==2)
 			return " - ";
-		}
-		else if (a==2) {
+		else if (n1==3)
 			return " × ";
-		}
-		else  {
+		else
 			return " ÷ ";
-		}
 	}
 	public String expression(){
 		
-		int randd = ra.nextInt(2);
+		int randd = (int)(Math.random()*3);
 
 		if(randd==0){                                                         //一个运算符
 			
@@ -39,7 +32,7 @@ public class Generate{
 			}
 		
 		else if (randd==1) {
-			int a = ra.nextInt(4);
+			int a = (int)(Math.random()*3);
 			String str0 =  getstring() + opch() + getstring() + opch() + getstring();
 			String str1 = "( "+ getstring() + opch() + getstring() + " )" + opch() + getstring();
 			String str2 = getstring() + opch() + "( " + getstring() + opch() + getstring() + " )";
@@ -58,12 +51,13 @@ public class Generate{
 		
 		else {
 			
-			int a = ra.nextInt(6);
+			int a = (int)(Math.random()*6);
 			String str0 = "( "+getstring() + opch() + getstring() + " )" + opch() + getstring() + opch() + getstring();
 			String str1 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + " )" + opch() + getstring();
 			String str2 = getstring() + opch() + getstring() + opch() +"( "+ getstring() + opch() + getstring() + " )";
 			String str3 = "( "+getstring() + opch() + getstring() + opch()  + getstring() + " )" + opch() + getstring();
 			String str4 = getstring() + opch() +"( "+ getstring() + opch() + getstring() + opch() + getstring() + " )";
+
 			String str5 = "( " + getstring() + opch() + getstring() + " )" + opch() + "( "+ getstring() + opch() + getstring() + " )";
 			
 			switch(a) {
@@ -93,39 +87,38 @@ public class Generate{
 		
 	}
 
-	Fraction rand() {
-		
-		int a = ra.nextInt(5);
-		Fraction f = new Fraction();
-		if(a>0) {
-
-			f.n = ra.nextInt(r);
-			f.ne = 0;
-			f.deno = 0 ;
-			return f;
+	Fraction rand2() {
+		int n1 =(int)(Math.random()*2);
+		if(n1==0) {
+			Fraction f1 = new Fraction();
+			f1.n = (int) (Math.random()*r);
+			f1.ne = 0;
+			f1.deno = 0 ;
+			return f1;
 		}
 		else {
 			//随机这是一个大于1的分数，还是小于1
-			if (ra.nextInt(2)==0) {                   //大于1
+			if ((int)(Math.random()*2)==0) {                   //大于1
 				
-			f.n = ra.nextInt(r);
-			f.deno = ra.nextInt(r-2)+2;		//分母
-			f.ne = ra.nextInt(f.deno-1)+1;   //分子
-			return f;
+			Fraction f2 = new Fraction();
+			f2.n = (int) (Math.random()*(r-1)+1);
+			f2.deno = (int) (Math.random()*(r-2)+2);		//分母
+			f2.ne = (int) (Math.random()*(f2.deno-1)+1);   //分子
+			return f2;
 			}
 			else {                                          //小于1
-			
-				f.n = 0;
-				f.deno = ra.nextInt(r-2)+2;
-				f.ne = ra.nextInt(f.deno-1)+1;
-				return f;
+				Fraction f3 = new Fraction();
+				f3.n = 0;
+				f3.deno = (int) (Math.random()*(r-2)+2);
+				f3.ne = (int) (Math.random()*(f3.deno-1)+1);
+				return f3;
 				}
 			}
 	}
 	
 	String getstring() {
 		
-		Fraction f = rand();
+		Fraction f = rand2();
 		return f.n+"'"+f.ne+"/"+f.deno;
 	}
 
@@ -138,4 +131,6 @@ public class Generate{
 	}
 	
 }
+
+
 

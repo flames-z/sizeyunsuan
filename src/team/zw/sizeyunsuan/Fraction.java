@@ -15,7 +15,7 @@ public class Fraction {
 		this.ne = f.ne;
 		this.deno = f.deno;
 	} 
-/****************	
+	/*************
 	public Fraction trans(Fraction f){
 		f.ne = f.n*f.deno + f.ne;
 		f.n = 0;
